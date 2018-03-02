@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ProsperoInv</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_label1">Stok Barang</string>
+    <string name="tab_label2">Pemesanan Barang</string>
+    <string name="action_settings">Laporan</string>
+</resources>
