@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Prospero</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_label1">Stok Barang</string>
+    <string name="tab_label2">Pemesanan Barang</string>
+    <string name="action_settings">Laporan</string>
+</resources>
