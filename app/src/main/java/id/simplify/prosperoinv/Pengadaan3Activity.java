@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class Pengadaan3Activity extends AppCompatActivity {
@@ -65,5 +66,8 @@ public class Pengadaan3Activity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickOrder(View view) {
     }
 }
