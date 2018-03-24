@@ -17,6 +17,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //inisiasi untuk atribut login
+        //testing push
         un = (EditText)findViewById(R.id.username);
         pwd = (EditText) findViewById(R.id.password);
         btn = (Button)findViewById(R.id.login);
