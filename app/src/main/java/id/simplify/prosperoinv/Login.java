@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
         if (usname.equals("admin") && psswd.equals("admin")){
             Toast.makeText(Login.this, "Login Berhasil",
                     Toast.LENGTH_LONG).show();
-            Intent next = new Intent(this, id.simplify.prosperoinv.pengadaan.Pengadaan3Activity.class);
+            Intent next = new Intent(this, dummy.class);
             startActivity(next);
 
         }
