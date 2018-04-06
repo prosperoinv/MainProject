@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "82291456270",
+    "firebase_url": "https://prosperoinv-88cdf.firebaseio.com",
+    "project_id": "prosperoinv-88cdf",
+    "storage_bucket": "prosperoinv-88cdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82291456270:android:3d2aee514eb3d8d5",
+        "android_client_info": {
+          "package_name": "id.simplify.prosperoinv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82291456270-43clmm0ttqi9effpnsnfvdb4gfhc9mub.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.simplify.prosperoinv",
+            "certificate_hash": "c2e711b2c81e50fcb14fe64c8d6556a97ed09a42"
+          }
+        },
+        {
+          "client_id": "82291456270-4l10jeup2m0d0u0l6u38n74jepsj9el7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOL42KZN_Ajt9SmFUHQvHtVP37Limm5SU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82291456270-4l10jeup2m0d0u0l6u38n74jepsj9el7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
