@@ -1,4 +1,4 @@
-package id.simplify.prosperoinv;
+package id.simplify.prosperoinv.pengadaan;
 
 
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import android.widget.ListAdapter;
 
 import java.util.LinkedList;
 
+import id.simplify.prosperoinv.pengadaan.PengadaanRec;
+import id.simplify.prosperoinv.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +26,7 @@ public class FragmentPengadaan2 extends Fragment implements View.OnClickListener
     private final LinkedList<String> jumlah = new LinkedList<>();
 
     private RecyclerView mRecyclerView;
-    private PengadaanRec mAdapter;
+    private id.simplify.prosperoinv.pengadaan.PengadaanRec mAdapter;
 
     public FragmentPengadaan2() {
         // Required empty public constructor

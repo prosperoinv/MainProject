@@ -16,9 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LaporanPengadaan" />
+        <activity android:name=".pengadaan.LaporanPengadaan" />
         <activity android:name=".Login" />
-        <activity android:name=".Pengadaan3Activity" />
+        <activity android:name=".pengadaan.Pengadaan3Activity" />
+        <activity
+            android:name=".produksi.produksi"
+            android:label="@string/title_activity_produksi"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".produksi.update_produksi" />
     </application>
 
 </manifest>

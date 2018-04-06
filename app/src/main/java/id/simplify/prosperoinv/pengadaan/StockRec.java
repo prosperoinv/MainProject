@@ -1,4 +1,4 @@
-package id.simplify.prosperoinv;
+package id.simplify.prosperoinv.pengadaan;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.LinkedList;
+
+import id.simplify.prosperoinv.R;
 
 /**
  * Created by Haikal on 3/24/2018.

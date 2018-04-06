@@ -6,4 +6,5 @@
     <string name="tab_label1">Stok Barang</string>
     <string name="tab_label2">Pemesanan Barang</string>
     <string name="action_settings">Laporan</string>
+    <string name="title_activity_produksi">ProsperoInv</string>
 </resources>

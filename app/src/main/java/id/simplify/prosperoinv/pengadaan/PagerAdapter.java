@@ -1,8 +1,11 @@
-package id.simplify.prosperoinv;
+package id.simplify.prosperoinv.pengadaan;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.Fragment;
+
+import id.simplify.prosperoinv.pengadaan.FragmentPengadaan1;
+import id.simplify.prosperoinv.pengadaan.FragmentPengadaan2;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;

@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="id.simplify.prosperoinv.FragmentPengadaan2">
+    tools:context="id.simplify.prosperoinv.pengadaan.FragmentPengadaan2">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recviewer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"

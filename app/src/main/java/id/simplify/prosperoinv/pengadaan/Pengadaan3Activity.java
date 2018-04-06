@@ -1,4 +1,4 @@
-package id.simplify.prosperoinv;
+package id.simplify.prosperoinv.pengadaan;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import id.simplify.prosperoinv.R;
+import id.simplify.prosperoinv.pengadaan.LaporanPengadaan;
 
 
 public class Pengadaan3Activity extends AppCompatActivity {

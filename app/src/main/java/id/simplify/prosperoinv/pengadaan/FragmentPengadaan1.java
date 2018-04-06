@@ -1,4 +1,4 @@
-package id.simplify.prosperoinv;
+package id.simplify.prosperoinv.pengadaan;
 
 
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 
 import java.util.LinkedList;
 
+import id.simplify.prosperoinv.R;
+import id.simplify.prosperoinv.pengadaan.StockRec;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +25,7 @@ public class FragmentPengadaan1 extends Fragment {
     private final LinkedList<String> jumlah = new LinkedList<>();
 
     private RecyclerView mRecyclerView;
-    private StockRec mAdapter;
+    private id.simplify.prosperoinv.pengadaan.StockRec mAdapter;
 
     public FragmentPengadaan1() {
         // Required empty public constructor
@@ -36,7 +39,7 @@ public class FragmentPengadaan1 extends Fragment {
         View view = inflater.inflate(R.layout.tab_pengadaan1, container, false);
         insertData();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.receviewer);
-        mAdapter = new StockRec(getActivity(), barang, vendor, jumlah);
+        mAdapter = new id.simplify.prosperoinv.pengadaan.StockRec(getActivity(), barang, vendor, jumlah);
         recyclerView.setAdapter(mAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
