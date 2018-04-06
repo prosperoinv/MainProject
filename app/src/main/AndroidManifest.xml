@@ -24,6 +24,7 @@
             android:label="@string/title_activity_produksi"
             android:theme="@style/AppTheme" />
         <activity android:name=".produksi.update_produksi" />
+        <activity android:name=".dummy"></activity>
     </application>
 
 </manifest>
