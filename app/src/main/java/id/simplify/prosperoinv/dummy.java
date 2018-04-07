@@ -8,7 +8,6 @@ import android.view.View;
 public class dummy extends AppCompatActivity {
     //Halo, linda su masuk
     //Tes tis
-    //apa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
