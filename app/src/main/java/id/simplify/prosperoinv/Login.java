@@ -1,10 +1,12 @@
 package id.simplify.prosperoinv;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,18 +17,24 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import id.simplify.prosperoinv.model.User;
 
 public class Login extends AppCompatActivity {
     EditText un, pwd;
     Button btn, su;
     ProgressBar progressBar;
     FirebaseAuth auth;
+    DatabaseReference dbUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
          auth = FirebaseAuth.getInstance();
+         dbUser = FirebaseDatabase.getInstance().getReference("user");
         //inisiasi untuk atribut login
         //testing push
         un = (EditText)findViewById(R.id.username);
@@ -36,8 +44,8 @@ public class Login extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
     public void daftar (View view){
-        String email = un.getText().toString().trim();
-        String password = pwd.getText().toString().trim();
+        final String email = un.getText().toString().trim();
+        final String password = pwd.getText().toString().trim();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -55,45 +63,72 @@ public class Login extends AppCompatActivity {
         }
         progressBar.setVisibility(View.VISIBLE);
         //create user
-
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                    @SuppressLint("RestrictedApi")
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Toast.makeText(Login.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(Login.this, "Authentication failed." + task.getException(),
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            startActivity(new Intent(Login.this, Login.class));
-                            finish();
+                     if (task.isSuccessful()) {
+                            @SuppressLint("RestrictedApi") String id = auth.getUid();
+                            String[] username = email.split("@");
+                            Integer roles =1;
+                            User user = new User(id,username[0],email,roles);
+                            dbUser.child(id).setValue(user);
+                            dbUser.child("userlist").child(auth.getUid()).setValue(user);
+                            Intent i = new Intent(Login.this,dummy.class);
+                            startActivity(i);
+                     } else {
+
                         }}});}
 
-    public void masuk (View view) {
-        final String usname = un.getText().toString();
-        String psswd = pwd.getText().toString();
 
-        if (usname.equals("admin") && psswd.equals("admin")){
-            Toast.makeText(Login.this, "Login Berhasil",
-                    Toast.LENGTH_LONG).show();
-            Intent next = new Intent(this, dummy.class);
-            startActivity(next);
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser!=null){
+            sendToMain();
         }
-        else {
-            Toast.makeText(Login.this, "Login Gagal",
-                    Toast.LENGTH_LONG).show();
-
-        }
-
     }
+
+    private void sendToMain() {
+        Intent mainIntent = new Intent(Login.this,dummy.class);
+        startActivity(mainIntent);
+    }
+
+       public void masuk (View view) {
+        final String email = un.getText().toString();
+        final String password = pwd.getText().toString();
+
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Toast.makeText(Login.this, "SignInWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
+                        if (task.isSuccessful()) {
+
+                            FirebaseUser user = auth.getCurrentUser();
+                            Intent intent = new Intent(Login.this, dummy.class);
+                            startActivity(intent);
+
+                            }else {
+                            Toast.makeText(Login.this, "Username atau Password salah", Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+
+                        }});}
+                    }
+
+
+
+
+
     //public void cancel (View view){
         //finish();
     //}
 
-}
+
 
