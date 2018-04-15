@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MainProject.iml" filepath="$PROJECT_DIR$/MainProject.iml" />
-      <module fileurl="file://C:\Users\Keenan\Documents\A\MainProject\ProperoInv.iml" filepath="C:\Users\Keenan\Documents\A\MainProject\ProperoInv.iml" />
-      <module fileurl="file://C:\Users\Keenan\Documents\A\MainProject\ProsperoInv.iml" filepath="C:\Users\Keenan\Documents\A\MainProject\ProsperoInv.iml" />
-      <module fileurl="file://C:\Users\Keenan\Keenan\AndroidStudioProjects\ProperoInv\ProsperoInv.iml" filepath="C:\Users\Keenan\Keenan\AndroidStudioProjects\ProperoInv\ProsperoInv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProsperoInv.iml" filepath="$PROJECT_DIR$/ProsperoInv.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

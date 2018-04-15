@@ -74,9 +74,10 @@ public class Login extends AppCompatActivity {
                             @SuppressLint("RestrictedApi") String id = auth.getUid();
                             String[] username = email.split("@");
                             Integer roles =1;
-                            User user = new User(id,username[0],email,roles);
+                         User user = new User(id, username[0], email);
+                         //writeNewUser(id,username[0],email);
+                         //dbUser.child("users").child(id).setValue(user);
                             dbUser.child(id).setValue(user);
-                            dbUser.child("userlist").child(auth.getUid()).setValue(user);
                             Intent i = new Intent(Login.this,dummy.class);
                             startActivity(i);
                      } else {
@@ -93,6 +94,10 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    private void writeNewUser(String id, String username, String email) {
+        User user = new User(id, username, email);
+        dbUser.child("users").child(id).setValue(user);
+    }
     private void sendToMain() {
         Intent mainIntent = new Intent(Login.this,dummy.class);
         startActivity(mainIntent);

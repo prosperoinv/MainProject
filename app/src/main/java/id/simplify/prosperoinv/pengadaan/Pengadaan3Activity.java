@@ -9,13 +9,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import id.simplify.prosperoinv.Login;
 import id.simplify.prosperoinv.R;
 import id.simplify.prosperoinv.pengadaan.LaporanPengadaan;
 
 
 public class Pengadaan3Activity extends AppCompatActivity {
-
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +37,10 @@ public class Pengadaan3Activity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label2));
         // Set the tabs to fill the entire layout.
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
+        FirebaseUser a = FirebaseAuth.getInstance().getCurrentUser();
+        if (a.getUid() != null) {
+            Toast.makeText(this, a.getUid(), Toast.LENGTH_SHORT).show();
+        }
         // Use PagerAdapter to manage page views in fragments.
         // Each page is represented by its own fragment.
         // This is another example of the adapter pattern.
@@ -66,6 +74,11 @@ public class Pengadaan3Activity extends AppCompatActivity {
             //Berpindah laman
             Intent intent = new Intent(this, LaporanPengadaan.class);
             startActivity(intent);
+            return true;
+        } else if (id == R.id.logout) {
+            FirebaseAuth.getInstance().signOut();
+            Intent a = new Intent(this, Login.class);
+            startActivity(a);
             return true;
         }
         return super.onOptionsItemSelected(item);
