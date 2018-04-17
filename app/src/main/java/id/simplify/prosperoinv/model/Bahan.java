@@ -8,7 +8,7 @@ public class Bahan {
     String jumlahbarang;
     Time lastupdate;
     String pengupdate;
-
+    //qoyum
     public Bahan(String namabarang, String vendorbarang, String jumlahbarang, Time lastupdate, String pengupdate) {
         this.namabarang = namabarang;
         this.vendorbarang = vendorbarang;
