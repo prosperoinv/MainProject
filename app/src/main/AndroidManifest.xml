@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".pengadaan.LaporanPengadaan" />
+        <activity android:name=".pengadaan.tbhbarangbaru" />
         <activity android:name=".Login" />
         <activity android:name=".pengadaan.Pengadaan3Activity" />
         <activity

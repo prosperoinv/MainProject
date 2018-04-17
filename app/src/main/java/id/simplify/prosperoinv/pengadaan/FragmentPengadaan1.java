@@ -1,8 +1,10 @@
 package id.simplify.prosperoinv.pengadaan;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,18 +21,16 @@ import id.simplify.prosperoinv.pengadaan.StockRec;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentPengadaan1 extends Fragment {
+public class FragmentPengadaan1 extends Fragment implements View.OnClickListener {
     private final LinkedList<String> barang = new LinkedList<>();
     private final LinkedList<String> vendor = new LinkedList<>();
     private final LinkedList<String> jumlah = new LinkedList<>();
 
     private RecyclerView mRecyclerView;
     private id.simplify.prosperoinv.pengadaan.StockRec mAdapter;
-
     public FragmentPengadaan1() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,13 +39,20 @@ public class FragmentPengadaan1 extends Fragment {
         View view = inflater.inflate(R.layout.tab_pengadaan1, container, false);
         insertData();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.receviewer);
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab1);
         mAdapter = new id.simplify.prosperoinv.pengadaan.StockRec(getActivity(), barang, vendor, jumlah);
         recyclerView.setAdapter(mAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(getActivity(), tbhbarangbaru.class);
+                startActivity(a);
+            }
+        });
         return view;
-
     }
 
     private void insertData() {
@@ -70,5 +77,10 @@ public class FragmentPengadaan1 extends Fragment {
             jumlah.add("103");
 
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
