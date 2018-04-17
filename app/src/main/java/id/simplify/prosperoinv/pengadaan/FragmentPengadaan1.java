@@ -21,7 +21,7 @@ import id.simplify.prosperoinv.pengadaan.StockRec;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentPengadaan1 extends Fragment implements View.OnClickListener {
+public class FragmentPengadaan1 extends Fragment {
     private final LinkedList<String> barang = new LinkedList<>();
     private final LinkedList<String> vendor = new LinkedList<>();
     private final LinkedList<String> jumlah = new LinkedList<>();
@@ -39,19 +39,11 @@ public class FragmentPengadaan1 extends Fragment implements View.OnClickListener
         View view = inflater.inflate(R.layout.tab_pengadaan1, container, false);
         insertData();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.receviewer);
-        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab1);
+        //FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab1);
         mAdapter = new id.simplify.prosperoinv.pengadaan.StockRec(getActivity(), barang, vendor, jumlah);
         recyclerView.setAdapter(mAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent a = new Intent(getActivity(), tbhbarangbaru.class);
-                startActivity(a);
-            }
-        });
         return view;
     }
 
@@ -79,8 +71,5 @@ public class FragmentPengadaan1 extends Fragment implements View.OnClickListener
         }
     }
 
-    @Override
-    public void onClick(View v) {
 
-    }
 }

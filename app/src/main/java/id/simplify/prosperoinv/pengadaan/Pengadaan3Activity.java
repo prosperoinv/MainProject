@@ -1,5 +1,6 @@
 package id.simplify.prosperoinv.pengadaan;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -67,23 +68,32 @@ public class Pengadaan3Activity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu_main);
         return true;
     }
+
+    @SuppressLint("NewApi")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            //Berpindah laman
+            //Berpindah laman ke laporan
             Intent intent = new Intent(this, LaporanPengadaan.class);
             startActivity(intent);
             return true;
         } else if (id == R.id.logout) {
+            //Logout dan mencegah dapat mengklik back
             FirebaseAuth.getInstance().signOut();
             Intent a = new Intent(this, Login.class);
             startActivity(a);
+            finishAffinity();
             return true;
+        } else if (id == R.id.tambahbarangbaru) {
+            //Menambah barang mentah baru
+            Intent b = new Intent(this, tbhbarangbaru.class);
+            startActivity(b);
+        } else if (id == R.id.tambahpesanan) {
+
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickOrder(View view) {
-    }
+
 }

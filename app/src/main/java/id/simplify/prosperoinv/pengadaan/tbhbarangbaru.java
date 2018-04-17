@@ -9,6 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+
+import java.sql.Time;
 
 import id.simplify.prosperoinv.R;
 import id.simplify.prosperoinv.model.Bahan;
@@ -16,6 +21,7 @@ import id.simplify.prosperoinv.model.Bahan;
 public class tbhbarangbaru extends AppCompatActivity {
     EditText namabarang, vendorbarang, jumlahbarang;
     FirebaseAuth a;
+    DatabaseReference c;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,9 +30,18 @@ public class tbhbarangbaru extends AppCompatActivity {
         namabarang = (EditText) findViewById(R.id.editText);
         vendorbarang = (EditText) findViewById(R.id.editText2);
         jumlahbarang = (EditText) findViewById(R.id.editText3);
+        a = FirebaseAuth.getInstance();
+        c = FirebaseDatabase.getInstance().getReference();
     }
 
     public void tambah(View view) {
-
+        String nama, vendor, jumlah;
+        nama = namabarang.getText().toString();
+        vendor = vendorbarang.getText().toString();
+        jumlah = jumlahbarang.getText().toString();
+        String usernow = a.getCurrentUser().getUid();
+        Bahan baru = new Bahan(nama, vendor, jumlah, null, null);
+        c.child("baseline-mentah").child(nama).setValue(baru);
+        tbhbarangbaru.this.finish();
     }
 }

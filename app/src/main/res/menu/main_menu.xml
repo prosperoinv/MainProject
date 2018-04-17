@@ -9,6 +9,16 @@
         android:title="@string/action_settings"
         app:showAsAction="never"></item>
     <item
+        android:id="@+id/tambahbarangbaru"
+        android:orderInCategory="100"
+        android:title="Tambah Barang Baru"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/tambahpesanan"
+        android:orderInCategory="100"
+        android:title="Tambah Pesanan"
+        app:showAsAction="never"></item>
+    <item
         android:id="@+id/logout"
         android:orderInCategory="100"
         android:title="Log Out"
