@@ -31,4 +31,20 @@ public class User {
     public Integer getRoles() {
         return roles;
     }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setRoles(Integer roles) {
+        this.roles = roles;
+    }
 }

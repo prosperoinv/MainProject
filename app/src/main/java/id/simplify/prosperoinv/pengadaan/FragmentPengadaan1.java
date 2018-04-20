@@ -2,20 +2,36 @@ package id.simplify.prosperoinv.pengadaan;
 
 
 import android.content.Intent;
+import android.content.PeriodicSync;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import id.simplify.prosperoinv.R;
+import id.simplify.prosperoinv.model.Bahan;
 import id.simplify.prosperoinv.pengadaan.StockRec;
+
 
 
 /**
@@ -25,8 +41,13 @@ public class FragmentPengadaan1 extends Fragment {
     private final LinkedList<String> barang = new LinkedList<>();
     private final LinkedList<String> vendor = new LinkedList<>();
     private final LinkedList<String> jumlah = new LinkedList<>();
-
-    private RecyclerView mRecyclerView;
+    private List<Bahan> posts;
+    RecyclerView recyclerView;
+    FirebaseDatabase db;
+    private ArrayList<Bahan> listPosts;
+    Query databaseFood;
+    DatabaseReference databaseReference;
+   // private RecyclerView mRecyclerView;
     private id.simplify.prosperoinv.pengadaan.StockRec mAdapter;
     public FragmentPengadaan1() {
         // Required empty public constructor
@@ -37,39 +58,39 @@ public class FragmentPengadaan1 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.tab_pengadaan1, container, false);
-        insertData();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.receviewer);
-        //FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab1);
-        mAdapter = new id.simplify.prosperoinv.pengadaan.StockRec(getActivity(), barang, vendor, jumlah);
-        recyclerView.setAdapter(mAdapter);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
+        databaseReference = FirebaseDatabase.getInstance().getReference("baseline-mentah");
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.receviewer);
+//      posts = new ArrayList<>();
         return view;
     }
 
-    private void insertData() {
-        for (int i = 0; i < 1; i++) {//pengulangan untuk menghasilkan data yang banyak
-            barang.add("Bahan Dasar"); //untuk menambah merk minuman
-            barang.add("Alas");
-            barang.add("Karet");
-            barang.add("Tali");
-            barang.add("Hiasan");
+    @Override
+    public void onStart() {
+        super.onStart();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+//                posts.clear();
 
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Bahan post = postSnapshot.getValue(Bahan.class);
+                    posts.add(post);
+                }
+                recyclerView.setHasFixedSize(true);
 
-            vendor.add("M"); //untuk menambah deskripsi
-            vendor.add("N");
-            vendor.add("O");
-            vendor.add("P");
-            vendor.add("Q");
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-            jumlah.add("27"); //untuk menambahkan foto
-            jumlah.add("11");
-            jumlah.add("19");
-            jumlah.add("98");
-            jumlah.add("103");
+                PostAdapter postList = new PostAdapter(getContext(), posts);
 
-        }
+                recyclerView.setAdapter(postList);
+                //mProgressDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
-
-
 }

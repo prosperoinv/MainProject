@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/MainProject.iml" filepath="$PROJECT_DIR$/MainProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProperoInv.iml" filepath="$PROJECT_DIR$/ProperoInv.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>

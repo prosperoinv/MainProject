@@ -68,13 +68,13 @@ public class Login extends AppCompatActivity {
                     @SuppressLint("RestrictedApi")
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Toast.makeText(Login.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Login.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                      if (task.isSuccessful()) {
                             @SuppressLint("RestrictedApi") String id = auth.getUid();
                             String[] username = email.split("@");
                             Integer roles =1;
-                         User user = new User(id, username[0], email);
+                            User user = new User(id, username[0], email);
                          //writeNewUser(id,username[0],email);
                          //dbUser.child("users").child(id).setValue(user);
                             dbUser.child(id).setValue(user);
