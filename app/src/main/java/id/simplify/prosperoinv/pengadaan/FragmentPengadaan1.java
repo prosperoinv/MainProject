@@ -38,16 +38,12 @@ import id.simplify.prosperoinv.pengadaan.StockRec;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentPengadaan1 extends Fragment {
-    private final LinkedList<String> barang = new LinkedList<>();
-    private final LinkedList<String> vendor = new LinkedList<>();
-    private final LinkedList<String> jumlah = new LinkedList<>();
     private List<Bahan> posts;
     RecyclerView recyclerView;
     FirebaseDatabase db;
     private ArrayList<Bahan> listPosts;
     Query databaseFood;
     DatabaseReference databaseReference;
-   // private RecyclerView mRecyclerView;
     private id.simplify.prosperoinv.pengadaan.StockRec mAdapter;
     public FragmentPengadaan1() {
         // Required empty public constructor
@@ -61,7 +57,7 @@ public class FragmentPengadaan1 extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference("baseline-mentah");
 
         recyclerView = (RecyclerView) view.findViewById(R.id.receviewer);
-//      posts = new ArrayList<>();
+        posts = new ArrayList<>();
         return view;
     }
 
@@ -71,20 +67,16 @@ public class FragmentPengadaan1 extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-//                posts.clear();
+                posts.clear();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Bahan post = postSnapshot.getValue(Bahan.class);
                     posts.add(post);
                 }
                 recyclerView.setHasFixedSize(true);
-
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
                 PostAdapter postList = new PostAdapter(getContext(), posts);
-
                 recyclerView.setAdapter(postList);
-                //mProgressDialog.dismiss();
             }
 
             @Override
