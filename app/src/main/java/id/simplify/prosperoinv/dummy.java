@@ -11,9 +11,6 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import id.simplify.prosperoinv.pengadaan.LaporanPengadaan;
-import id.simplify.prosperoinv.pengadaan.tbhbarangbaru;
-
 public class dummy extends AppCompatActivity {
     //Halo, linda su masuk
     //Tes tis

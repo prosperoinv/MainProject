@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import id.simplify.prosperoinv.R;
 
-public class LaporanPengadaan extends AppCompatActivity {
+public class DetailBarang extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

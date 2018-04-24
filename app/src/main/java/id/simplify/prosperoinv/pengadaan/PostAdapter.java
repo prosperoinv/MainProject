@@ -7,18 +7,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import id.simplify.prosperoinv.R;
 import id.simplify.prosperoinv.model.Bahan;
-
+//Class ini berfungsi sebagai adapter dari recyclerview per fragment
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> {
     private Context context;
     private List<Bahan> posts;
-
 
     public PostAdapter(Context context, List<Bahan> posts) {
         this.context = context;
@@ -41,7 +39,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
         holder.cardViewPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, LaporanPengadaan.class);
+                Intent intent = new Intent(context, DetailBarang.class);
+                intent.putExtra("group",context.getClass().toString());
                 intent.putExtra("nama",post.getNamabarang());
                 intent.putExtra("vendor",post.getVendorbarang());
                 intent.putExtra("jumlah",post.getJumlahbarang());

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.simplify.prosperoinv">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -17,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pengadaan.LaporanPengadaan" />
+        <activity android:name=".pengadaan.DetailBarang" />
         <activity android:name=".pengadaan.tbhbarangbaru" />
         <activity android:name=".Login" />
         <activity android:name=".pengadaan.Pengadaan3Activity" />
@@ -30,7 +31,8 @@
         <activity android:name=".penjualan.Penjualan1" />
         <activity android:name=".penjualan.Detail" />
         <activity android:name=".distribusi.Distribusi1" />
-        <activity android:name=".distribusi.D_adapter"></activity>
+        <activity android:name=".distribusi.D_adapter" />
+        <activity android:name=".pengadaan.TambahPesanan"></activity>
     </application>
 
 </manifest>

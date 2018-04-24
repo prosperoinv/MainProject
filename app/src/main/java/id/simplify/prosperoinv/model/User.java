@@ -9,8 +9,8 @@ public class User {
     String username;
     String email;
     Integer roles;
-    public User(String id, String s, String email, Integer roles){
 
+    public User(){
     }
     public User(String userId, String username, String email){
         this.userId=userId;

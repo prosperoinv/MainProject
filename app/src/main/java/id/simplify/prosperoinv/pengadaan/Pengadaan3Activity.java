@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,7 +16,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 import id.simplify.prosperoinv.Login;
 import id.simplify.prosperoinv.R;
-import id.simplify.prosperoinv.pengadaan.LaporanPengadaan;
 
 
 public class Pengadaan3Activity extends AppCompatActivity {
@@ -75,7 +73,7 @@ public class Pengadaan3Activity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             //Berpindah laman ke laporan
-            Intent intent = new Intent(this, LaporanPengadaan.class);
+            Intent intent = new Intent(this, DetailBarang.class);
             startActivity(intent);
             return true;
         } else if (id == R.id.logout) {
@@ -90,6 +88,8 @@ public class Pengadaan3Activity extends AppCompatActivity {
             Intent b = new Intent(this, tbhbarangbaru.class);
             startActivity(b);
         } else if (id == R.id.tambahpesanan) {
+            Intent c = new Intent(this,TambahPesanan.class);
+            startActivity(c);
 
         }
         return super.onOptionsItemSelected(item);

@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/backgr"
-    tools:context="id.simplify.prosperoinv.pengadaan.LaporanPengadaan">
+    tools:context="id.simplify.prosperoinv.pengadaan.DetailBarang">
 
 </android.support.constraint.ConstraintLayout>
