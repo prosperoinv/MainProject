@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,7 +56,7 @@ public class TambahPesanan extends AppCompatActivity {
     }
 
     private void dataforuser() {
-        Query query = user.child("user").orderByChild("userId").equalTo(uiduser);
+        Query query = user.child("user").equalTo(uiduser);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -69,6 +70,7 @@ public class TambahPesanan extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+        Toast.makeText(this,namauser,Toast.LENGTH_SHORT).show();
     }
 
     private void dataforspinner() {

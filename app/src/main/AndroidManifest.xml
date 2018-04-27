@@ -32,7 +32,8 @@
         <activity android:name=".penjualan.Detail" />
         <activity android:name=".distribusi.Distribusi1" />
         <activity android:name=".distribusi.D_adapter" />
-        <activity android:name=".pengadaan.TambahPesanan"></activity>
+        <activity android:name=".pengadaan.TambahPesanan" />
+        <activity android:name=".produksi.BarangBarang"></activity>
     </application>
 
 </manifest>
