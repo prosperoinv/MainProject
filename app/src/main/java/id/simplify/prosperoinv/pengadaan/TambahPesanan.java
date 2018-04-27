@@ -45,24 +45,13 @@ public class TambahPesanan extends AppCompatActivity {
         inputkeun = database.getInstance().getReference("baseline-mentah");
         inputkeun2 = database.getInstance().getReference("pesanan");
         user = database.getInstance().getReference();
-        dataforspinner();
-        dataforuser();
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    private void dataforuser() {
-        Query query = user.child("user").equalTo(uiduser);
+        Query query = user.child("user").child(uiduser);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     User user = dataSnapshot.getValue(User.class);
-                    namauser = user.getUsername();
+                    namauser = user.getUsername().toString();
                 }
             }
 
@@ -71,6 +60,9 @@ public class TambahPesanan extends AppCompatActivity {
             }
         });
         Toast.makeText(this,namauser,Toast.LENGTH_SHORT).show();
+        dataforspinner();
+
+
     }
 
     private void dataforspinner() {

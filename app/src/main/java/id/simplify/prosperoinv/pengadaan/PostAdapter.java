@@ -34,7 +34,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
         final Bahan post= posts.get(position);
 
         holder.mNama.setText(post.getNamabarang());
-        holder.mVendor.setText(post.getVendorbarang());
+        holder.mVendor.setText(post.getPengupdate());
         holder.mJumlah.setText(post.getJumlahbarang());
         holder.cardViewPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +43,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
                 intent.putExtra("group",context.getClass().toString());
                 intent.putExtra("nama",post.getNamabarang());
                 intent.putExtra("vendor",post.getVendorbarang());
+                intent.putExtra("update",post.getPengupdate());
                 intent.putExtra("jumlah",post.getJumlahbarang());
                 context.startActivity(intent);
             }

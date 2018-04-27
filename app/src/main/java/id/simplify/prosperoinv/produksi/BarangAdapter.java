@@ -8,15 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.List;
 
 import id.simplify.prosperoinv.R;
-import id.simplify.prosperoinv.model.Bahan;
 import id.simplify.prosperoinv.model.Barang;
-import id.simplify.prosperoinv.pengadaan.DetailBarang;
+
+
 
 public class BarangAdapter extends RecyclerView.Adapter<id.simplify.prosperoinv.produksi.BarangAdapter.MyViewHolder> {
     private Context context;
@@ -40,12 +37,14 @@ public class BarangAdapter extends RecyclerView.Adapter<id.simplify.prosperoinv.
 
         holder.mNama.setText(post.getNamabrg());
         holder.mJumlah.setText(post.getJumlahbarang());
+        holder.mPengupdate.setText(post.getPengupdate());
         holder.cardViewPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailBarang.class);
+                Intent intent = new Intent(context, DetailBarangJadi.class);
                 intent.putExtra("nama",post.getNamabrg());
                 intent.putExtra("jumlah",post.getJumlahbarang());
+                intent.putExtra("pengupdate",post.getPengupdate());
                 context.startActivity(intent);
             }
         });
@@ -60,6 +59,7 @@ public class BarangAdapter extends RecyclerView.Adapter<id.simplify.prosperoinv.
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         public TextView mNama;
+        public TextView mPengupdate;
         public TextView mJumlah;
         public CardView cardViewPost;
 
@@ -67,6 +67,7 @@ public class BarangAdapter extends RecyclerView.Adapter<id.simplify.prosperoinv.
             super(itemView);
             mNama = itemView.findViewById(R.id.pesanan);
             mJumlah = itemView.findViewById(R.id.jumlah);
+            mPengupdate = itemView.findViewById(R.id.pengupdate);
             cardViewPost= itemView.findViewById(R.id.card_view);
         }
     }

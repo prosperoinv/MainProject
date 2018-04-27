@@ -19,7 +19,7 @@ public class DetailBarang extends AppCompatActivity {
         b = (TextView) findViewById(R.id.editText2);
         c = (TextView) findViewById(R.id.editText3);
         judul = (TextView) findViewById(R.id.textView10);
-        vedor = (TextView) findViewById(R.id.textView12);
+        vedor = (TextView) findViewById(R.id.textView2);
         remover = (TextView) findViewById(R.id.textView13);
         masuk = getIntent();
         nama = masuk.getStringExtra("nama");
