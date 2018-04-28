@@ -33,7 +33,8 @@ public class dummy extends AppCompatActivity {
     }
 
     public void godistribusi(View view) {
-    //    Intent c = new Intent(dummy.this,);
+        Intent c = new Intent(dummy.this,id.simplify.prosperoinv.distribusi.Distribusi1.class);
+        startActivity(c);
     }
 
     public void golayanan(View view) {

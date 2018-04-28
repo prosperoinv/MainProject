@@ -34,7 +34,8 @@
         <activity android:name=".distribusi.D_adapter" />
         <activity android:name=".pengadaan.TambahPesanan" />
         <activity android:name=".produksi.BarangBarang" />
-        <activity android:name=".produksi.DetailBarangJadi"></activity>
+        <activity android:name=".produksi.DetailBarangJadi" />
+        <activity android:name=".penjualan.TambahJualan"></activity>
     </application>
 
 </manifest>

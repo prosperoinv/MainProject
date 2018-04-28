@@ -1,75 +1,94 @@
 package id.simplify.prosperoinv.penjualan;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import id.simplify.prosperoinv.Login;
 import id.simplify.prosperoinv.R;
+import id.simplify.prosperoinv.model.Jual;
 
 public class Penjualan1 extends AppCompatActivity {
-    private ArrayList<String> psn;
-
+    RecyclerView recyclerView;
+    private List<Jual> posts;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_penjualan1);
-
-        initView();
+        recyclerView = (RecyclerView)findViewById(R.id.rv);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar4);
+        setSupportActionBar(toolbar);
+        databaseReference = FirebaseDatabase.getInstance().getReference("penjualan");
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        posts = new ArrayList<>();
     }
 
-        private void initView(){
-            RecyclerView recyclerView = (RecyclerView)findViewById(R.id.rv);
-            recyclerView.setHasFixedSize(true);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                posts.clear();
 
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-
-            recyclerView.setLayoutManager(layoutManager);
-            psn = new ArrayList<>();
-            psn.add("Pesanan 001");
-            psn.add("Pesanan 002");
-            psn.add("Pesanan 003");
-            psn.add("Pesanan 004");
-            psn.add("Pesanan 005");
-
-            RecyclerView.Adapter adapter = new Adapter(psn);
-            recyclerView.setAdapter(adapter);
-
-            recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-                GestureDetector gestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
-
-                    public boolean onSingleTapUp(MotionEvent e){
-                        return true;
-                    }
-                });
-
-                @Override
-                public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                    View child = rv.findChildViewUnder(e.getX(), e.getY());
-                    if (child != null && gestureDetector.onTouchEvent(e)){
-                        int position = rv.getChildAdapterPosition(child);
-                        Intent intent = new Intent(getBaseContext(), Detail.class);
-                        intent.putExtra("pesanan",psn.get(position));
-                        startActivity(intent);
-                    }
-                    return false;
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Jual post = postSnapshot.getValue(Jual.class);
+                    posts.add(post);
                 }
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                //Bagian yang memasukkan get data ke adapter sehingga masuk recyclerview
+                JualAdapter postList = new JualAdapter(getApplicationContext(), posts);
+                recyclerView.setAdapter(postList);
+            }
 
-                @Override
-                public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                }
+            }
+        });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu_main) {
+        getMenuInflater().inflate(R.menu.menu_jual, menu_main);
+        return true;
+    }
 
-                @Override
-                public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+    @SuppressLint("NewApi")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.logout) {
+            //Logout dan mencegah dapat mengklik back
+            FirebaseAuth.getInstance().signOut();
+            Intent a = new Intent(this, Login.class);
+            startActivity(a);
+            finishAffinity();
+            return true;
+        } else if (id == R.id.addsell){
+            Intent a = new Intent(this,TambahJualan.class);
+            startActivity(a);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
 
-                }
-
-    });
-}}

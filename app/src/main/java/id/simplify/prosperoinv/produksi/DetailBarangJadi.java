@@ -41,10 +41,10 @@ public class DetailBarangJadi extends AppCompatActivity {
         pud = (TextView) findViewById(R.id.editText3);
         barui = (EditText) findViewById(R.id.editText5);
         a = FirebaseAuth.getInstance();
-        FindOutUser();
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
         dr = FirebaseDatabase.getInstance().getReference("baseline-mentah");
-
+        FindOutUser();
         ab = getIntent();
         nama = ab.getStringExtra("nama");
         jumlah = ab.getStringExtra("jumlah");
@@ -58,11 +58,14 @@ public class DetailBarangJadi extends AppCompatActivity {
     }
 
     private void FindOutJumlah() {
-        dr.child("ALAS DALAM").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("baseline-mentah").child("ALAS DALAM").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n1 = bahan.getJumlahbarang();
+                if (dataSnapshot.exists()) {
+                    Bahan bahan = dataSnapshot.getValue(Bahan.class);
+                    n1 = bahan.getJumlahbarang().toString();
+                }
+
             }
 
             @Override

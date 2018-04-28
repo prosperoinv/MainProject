@@ -5,17 +5,38 @@ public class Jual {
     String namabarang;
     String jumlah;
     String pengupdate;
+    String pemesan;
+    String alamat;
 
     public Jual(){
 
     }
 
-    public Jual(String nojual, String namabarang, String jumlah, String pengupdate) {
+    public Jual(String nojual, String namabarang, String jumlah, String pengupdate, String pemesan, String alamat) {
         this.nojual = nojual;
         this.namabarang = namabarang;
         this.jumlah = jumlah;
         this.pengupdate = pengupdate;
+        this.pemesan = pemesan;
+        this.alamat = alamat;
     }
+
+    public String getPemesan() {
+        return pemesan;
+    }
+
+    public void setPemesan(String pemesan) {
+        this.pemesan = pemesan;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
     public String getNojual() {
         return nojual;
     }

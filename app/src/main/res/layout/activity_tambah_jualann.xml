@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/backgr"
-    tools:context="id.simplify.prosperoinv.penjualan.Detail">
+    tools:context=".penjualan.TambahJualan">
 
     <TextView
         android:id="@+id/textView"
@@ -16,7 +16,7 @@
         android:layout_marginRight="127dp"
         android:layout_marginStart="127dp"
         android:layout_marginTop="80dp"
-        android:text="Detail Penjualan"
+        android:text="Tambah Penjualan Baru"
         android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,16 +36,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
+    <EditText
         android:id="@+id/editText"
-        android:layout_width="170dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_width="190dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="number"
-        android:text="ollo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -61,17 +60,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-    <TextView
+    <EditText
         android:id="@+id/editText3"
-        android:layout_width="170dp"
-        android:layout_height="25dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="190dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="19dp"
         android:ems="10"
-        android:text="ollo"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
     <TextView
         android:id="@+id/textView13"
@@ -96,22 +95,21 @@
         android:layout_marginLeft="148dp"
         android:layout_marginRight="148dp"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="44dp"
         android:onClick="tambah"
         android:text="Tambah"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/editText7" />
 
-    <TextView
-        android:id="@+id/editText2"
-        android:layout_width="170dp"
-        android:layout_height="31dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="40dp"
-        android:text="ollo"
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="176dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
+        android:layout_marginTop="21dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
@@ -131,15 +129,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
-    <TextView
+    <EditText
         android:id="@+id/editText6"
-        android:layout_width="170dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="37dp"
+        android:layout_width="190dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
-        android:text="ollo"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
@@ -151,48 +149,22 @@
         android:layout_marginLeft="44dp"
         android:layout_marginRight="60dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="33dp"
         android:text="Alamat"
         android:textSize="18dp"
         app:layout_constraintEnd_toStartOf="@+id/editText7"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-    <TextView
+    <EditText
         android:id="@+id/editText7"
-        android:layout_width="170dp"
-        android:layout_height="27dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="190dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="19dp"
         android:ems="10"
-        android:text="ollo"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText6" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="27dp"
-        android:text="Pengupdate"
-        app:layout_constraintEnd_toStartOf="@+id/textView19"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="170dp"
-        android:layout_height="27dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="27dp"
-        android:text="ollo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
 </android.support.constraint.ConstraintLayout>
