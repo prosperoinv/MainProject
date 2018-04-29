@@ -66,7 +66,7 @@ public class Distribusi1 extends AppCompatActivity {
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 //Bagian yang memasukkan get data ke adapter sehingga masuk recyclerview
-                JualAdapter postList = new JualAdapter(getApplicationContext(), posts);
+                DistAdapter postList = new DistAdapter(getApplicationContext(), posts);
                 recyclerView.setAdapter(postList);
             }
 
@@ -78,7 +78,7 @@ public class Distribusi1 extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu_main) {
-        getMenuInflater().inflate(R.menu.menu_jual, menu_main);
+        //getMenuInflater().inflate(R.menu.menu_jual, menu_main);
         return true;
     }
     @SuppressLint("NewApi")

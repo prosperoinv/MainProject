@@ -1,22 +1,26 @@
-package id.simplify.prosperoinv.penjualan;
+package id.simplify.prosperoinv.distribusi;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import id.simplify.prosperoinv.R;
 
-public class Detail extends AppCompatActivity {
+public class DetailDistribusi extends AppCompatActivity {
     Intent manaada;
     String nama,jumlah,pengupdate,no,pemesan,alamat;
     TextView a,b,c,d,e,f;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_detail_distribusi);
         manaada=getIntent();
         nama = manaada.getStringExtra("nama");
         jumlah = manaada.getStringExtra("jumlah");
@@ -37,5 +41,12 @@ public class Detail extends AppCompatActivity {
         e.setText(alamat);
         f.setText(pengupdate);
         Toast.makeText(this,manaada.getStringExtra("klas"),Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void kirim(View view) {
+        databaseReference = FirebaseDatabase.getInstance().getReference("penjualan");
+        databaseReference.child(no).removeValue();
+        DetailDistribusi.this.finish();
     }
 }

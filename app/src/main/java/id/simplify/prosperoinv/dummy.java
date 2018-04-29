@@ -37,9 +37,6 @@ public class dummy extends AppCompatActivity {
         startActivity(c);
     }
 
-    public void golayanan(View view) {
-    }
-
     public void gopenjualan(View view) {
             Intent e = new Intent(dummy.this,id.simplify.prosperoinv.penjualan.Penjualan1.class);
             startActivity(e);
