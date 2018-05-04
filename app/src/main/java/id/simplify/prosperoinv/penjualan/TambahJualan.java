@@ -3,9 +3,11 @@ package id.simplify.prosperoinv.penjualan;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,8 +28,9 @@ import id.simplify.prosperoinv.pengadaan.TambahPesanan;
 
 public class TambahJualan extends AppCompatActivity {
     DatabaseReference inputkeun1,inputkeun2,user,databaseReference;
-    String no,namabarang,jumlah,pemesan,pengupdate,alamat,uiduser,namauser;
+    String no,namabarang,jumlah,pemesan,pengupdate,alamat,uiduser,namauser,jumlahbarang,totalbaru,pesanan;
     EditText a,b,c,d,e,f;
+    Integer satu,dua,tiga;
     Spinner aa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,31 @@ public class TambahJualan extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+        aa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                pesanan = (String)aa.getSelectedItem();
+                inputkeun1.child(pesanan).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            Barang barang = dataSnapshot.getValue(Barang.class);
+                            jumlahbarang = barang.getJumlahbarang();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
     }
 
     private void dataforspinner() {
@@ -91,11 +119,28 @@ public class TambahJualan extends AppCompatActivity {
         pemesan = c.getText().toString();
         alamat = d.getText().toString();
         if(aa != null && aa.getSelectedItem() !=null ) {
-            String pesanan = (String)aa.getSelectedItem();
+            pesanan = (String)aa.getSelectedItem();
             Jual nambahnih = new Jual(no,pesanan,jumlah,namauser,pemesan,alamat);
+            caridata();
+            inputkeun1.child(pesanan).child("jumlahbarang").setValue(String.valueOf(totalbaru));
             inputkeun2.child(no).setValue(nambahnih);
             TambahJualan.this.finish();
-        } else  {
         }
     }
+
+    private void caridata() {
+
+        //Toast.makeText(this,jumlahbarang,Toast.LENGTH_SHORT).show();
+        getKurangin(jumlahbarang,jumlah);
+    }
+
+    private String getKurangin(String aa, String be) {
+        satu = Integer.parseInt(aa);
+        dua = Integer.parseInt(be);
+        tiga = satu-dua;
+        totalbaru = String.valueOf(tiga);
+        return totalbaru;
+    }
+
+
 }

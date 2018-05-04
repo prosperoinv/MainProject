@@ -44,14 +44,6 @@ public class produksi extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.review);
         posts = new ArrayList<>();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent a = new Intent(produksi.this, update_produksi.class);
-                startActivity(a);
-            }
-        });
     }
 
     @Override

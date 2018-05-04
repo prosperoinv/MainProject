@@ -34,15 +34,10 @@ public class Pengadaan3Activity extends AppCompatActivity {
         //Setting nama masing-masing tab
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label1));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label2));
-        // Set the tabs to fill the entire layout.
+
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         FirebaseUser a = FirebaseAuth.getInstance().getCurrentUser();
-        if (a.getUid() != null) {
-            Toast.makeText(this, a.getUid(), Toast.LENGTH_SHORT).show();
-        }
-        // Use PagerAdapter to manage page views in fragments.
-        // Each page is represented by its own fragment.
-        // This is another example of the adapter pattern.
+
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
@@ -71,12 +66,7 @@ public class Pengadaan3Activity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            //Berpindah laman ke laporan
-            Intent intent = new Intent(this, DetailBarang.class);
-            startActivity(intent);
-            return true;
-        } else if (id == R.id.logout) {
+        if (id == R.id.logout) {
             //Logout dan mencegah dapat mengklik back
             FirebaseAuth.getInstance().signOut();
             Intent a = new Intent(this, Login.class);

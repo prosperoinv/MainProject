@@ -24,8 +24,9 @@ import id.simplify.prosperoinv.model.User;
 public class DetailBarangJadi extends AppCompatActivity {
     Intent ab;
     String nama,jumlah,pengupdate;
-    String n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12;
-    Integer lama,baru,total;
+    String nilaisatu,nilaidua,nilaitiga,nmbhn1,nmbhn2,nmbhn3;
+    String satu,dua,tiga;
+    Integer lama,baru,total,var1,var2,var3;
     TextView nm,jml,pud;
     EditText barui;
     DatabaseReference databaseReference,dr;
@@ -49,285 +50,123 @@ public class DetailBarangJadi extends AppCompatActivity {
         nama = ab.getStringExtra("nama");
         jumlah = ab.getStringExtra("jumlah");
         pengupdate = ab.getStringExtra("pengupdate");
-        FindOutJumlah();
+//        FindOutJumlah();
         nm.setText(nama);
         jml.setText(jumlah);
         pud.setText(pengupdate);
 //        Toast.makeText(this,n1,Toast.LENGTH_SHORT).show();
 
+
+
+
+
+//        if (nama.equals("Sepatu Merah")){
+//            nmbhn1 = "ALAS DALAM";
+//            nmbhn2 = "ALAS LUAR";
+//            nmbhn3 = "PERMATA SEPATU";
+//            var1 = FindNilaiA(nmbhn1);
+//            var2 = FindNilaiB(nmbhn2);
+//            var3 = FindNilaiC(nmbhn3);
+//        } else if (nama.equals("Flat Shoes Cream")){
+//            nmbhn1 = "ALAS DALAM";
+//            nmbhn2 = "ALAS LUAR";
+//            nmbhn3 = "KAIN SEPATU CREAM";
+//            var1 = FindNilaiA(nmbhn1);
+//            var2 = FindNilaiB(nmbhn2);
+//            var3 = FindNilaiC(nmbhn3);
+//        } else if (nama.equals("Flat Shoes Hitam")){
+//            nmbhn1 = "ALAS DALAM";
+//            nmbhn2 = "ALAS LUAR";
+//            nmbhn3 = "KAIN SEPATU HITAM";
+//            var1 = FindNilaiA(nmbhn1);
+//            var2 = FindNilaiB(nmbhn2);
+//            var3 = FindNilaiC(nmbhn3);
+//        } else if (nama.equals("Flat Shoes Pink")){
+//            nmbhn1 = "ALAS DALAM";
+//            nmbhn2 = "ALAS LUAR";
+//            nmbhn3 = "KAIN SEPATU PINK";
+//            var1 = FindNilaiA(nmbhn1);
+//            var2 = FindNilaiB(nmbhn2);
+//            var3 = FindNilaiC(nmbhn3);
+//        } else if (nama.equals("Flat Shoes Coklat")){
+//            nmbhn1 = "ALAS DALAM";
+//            nmbhn2 = "ALAS LUAR";
+//            nmbhn3 = "KAIN SEPATU COKLAT";
+//            var1 = FindNilaiA(nmbhn1);
+//            var2 = FindNilaiB(nmbhn2);
+//            var3 = FindNilaiC(nmbhn3);
+//        } else if (nama.equals("Flat Shoes Putih")){
+//            nmbhn1 = "ALAS DALAM";
+//            nmbhn2 = "ALAS LUAR";
+//            nmbhn3 = "KAIN SEPATU PUTIH";
+//            var1 = FindNilaiA(nmbhn1);
+//            var2 = FindNilaiB(nmbhn2);
+//            var3 = FindNilaiC(nmbhn3);
+//        } else if (nama.equals("Flat Sepatu Kulit Suede Pink")){
+//            nmbhn1 = "ALAS DALAM";
+//            nmbhn2 = "ALAS LUAR";
+//            nmbhn3 = "KULIT SUEDE PINK";
+//            var1 = FindNilaiA(nmbhn1);
+//            var2 = FindNilaiB(nmbhn2);
+//            var3 = FindNilaiC(nmbhn3);
+//        }
+
+//        Toast.makeText(this,var1,Toast.LENGTH_SHORT).show();
     }
 
-    private void FindOutJumlah() {
-        databaseReference.child("baseline-mentah").child("ALAS DALAM").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                    n1 = bahan.getJumlahbarang().toString();
-                }
+//   private Integer FindNilaiA(String n1){
+//        satu= n1;
+//        dr.child(nmbhn1).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    Bahan baru = dataSnapshot.getValue(Bahan.class);
+//                    nilaisatu = baru.getJumlahbarang();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
+//        Integer a = Integer.parseInt(nilaisatu);
+//        return a;
+//    }
+//    private Integer FindNilaiB(String n1){
+//        dua= n1;
+//        dr.child(nmbhn2).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    Bahan baru = dataSnapshot.getValue(Bahan.class);
+//                    nilaidua = baru.getJumlahbarang();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
+//        Integer b = Integer.parseInt(nilaidua);
+//        return b;
+//    }
+//    private Integer FindNilaiC(String n1){
+//        tiga= n1;
+//        dr.child(nmbhn3).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    Bahan baru = dataSnapshot.getValue(Bahan.class);
+//                    nilaitiga = baru.getJumlahbarang();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        });
+//        Integer c = Integer.parseInt(nilaitiga);
+//        return c;
+//    }
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        databaseReference.child("baseline-mentah").child("ALAS LUAR").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n2 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        databaseReference.child("baseline-mentah").child("KAIN ALAS DALAM").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n3 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        databaseReference.child("baseline-mentah").child("KAIN CORAK BUNGA").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n4 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        databaseReference.child("baseline-mentah").child("KAIN SEPATU COKLAT").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n5 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        databaseReference.child("baseline-mentah").child("KAIN SEPATU CREAM").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n6 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        databaseReference.child("baseline-mentah").child("KAIN SEPATU HITAM").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n7 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        databaseReference.child("baseline-mentah").child("KAIN SEPATU PINK").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n8 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        databaseReference.child("baseline-mentah").child("KAIN SEPATU PUTIH").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n9 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        databaseReference.child("baseline-mentah").child("KULIT").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n10 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        databaseReference.child("baseline-mentah").child("KULIT SUEDE PINK").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n11 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        databaseReference.child("baseline-mentah").child("PERMATA SEPATU").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Bahan bahan = dataSnapshot.getValue(Bahan.class);
-                n12 = bahan.getJumlahbarang().toString();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
-    public void updatejumlahjadi(View view) {
-        if (nama=="Sepatu Merah"){
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS DALAM")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n1)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("KAIN ALAS DALAM")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n3)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS LUAR")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n2)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("KULIT")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n10)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("PERMATA SEPATU")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n12)-2));
-
-        } else if (nama=="Flat Sepatu Kulit Suede Pink"){
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS DALAM")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n1)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS LUAR")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n2)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("KULIT SUEDE PINK")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n11)-2));
-
-        } else if (nama=="Flat Shoes Coklat"){
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS DALAM")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n1)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS LUAR")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n2)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("KAIN SEPATU COKLAT")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n5)-2));
-        }
-        else if (nama=="Flat Shoes Cream"){
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS DALAM")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n1)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS LUAR")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n2)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("KAIN SEPATU CREAM")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n6)-2));
-
-        }
-        else if (nama=="Flat Shoes Hitam"){
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS DALAM")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n1)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS LUAR")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n2)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("KAIN SEPATU HITAM")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n7)-2));
-
-        }
-        else if (nama=="Flat Shoes Pink"){
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS DALAM")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n1)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS LUAR")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n2)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("KAIN SEPATU PINK")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n8)-2));
-
-        }
-        else if (nama=="Flat Shoes Putih"){
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS DALAM")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n1)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("ALAS LUAR")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n2)-2));
-            databaseReference.child("baseline-mentah")
-                    .child("KAIN SEPATU PUTIH")
-                    .child("jumlahbarang")
-                    .setValue(String.valueOf(Integer.parseInt(n9)-2));
-        }
-
-        lama = Integer.parseInt(jumlah);
-        baru = Integer.parseInt(barui.getText().toString());
-        total = lama+baru;
-        String totalupdate = String.valueOf(total);
-        databaseReference.child("barang-jadi").child(nama).child("jumlahbarang").setValue(totalupdate);
-        databaseReference.child("barang-jadi").child(nama).child("pengupdate").setValue(namauser);
-        DetailBarangJadi.this.finish();
-    }
     private void FindOutUser() {
         user = a.getCurrentUser();
         uiduser = user.getUid();
@@ -345,5 +184,26 @@ public class DetailBarangJadi extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    public void updatejumlahjadi(View view) {
+//        Integer nilaibahan1,nilaibahan2,nilaibahan3,yangbaru;
+//        yangbaru = Integer.parseInt(barui.getText().toString());
+//        nilaibahan1 = var1-(2*yangbaru);
+//        nilaibahan2 = var2-(2*yangbaru);
+//        nilaibahan3 = var3-(2*yangbaru);
+        lama = Integer.parseInt(jumlah);
+        baru = Integer.parseInt(barui.getText().toString());
+        total = lama+baru;
+        String totalupdate = String.valueOf(total);
+        databaseReference.child("barang-jadi").child(nama).child("jumlahbarang").setValue(totalupdate);
+        databaseReference.child("barang-jadi").child(nama).child("pengupdate").setValue(namauser);
+//        dr.child(nmbhn1).child("jumlahbarang").setValue(String.valueOf(nilaibahan1));
+//        dr.child(nmbhn1).child("pengupdate").setValue(namauser);
+//        dr.child(nmbhn2).child("jumlahbarang").setValue(String.valueOf(nilaibahan2));
+//        dr.child(nmbhn2).child("pengupdate").setValue(namauser);
+//        dr.child(nmbhn3).child("jumlahbarang").setValue(String.valueOf(nilaibahan3));
+//        dr.child(nmbhn3).child("pengupdate").setValue(namauser);
+        DetailBarangJadi.this.finish();
     }
 }

@@ -59,6 +59,7 @@ public class DetailBarang extends AppCompatActivity {
             remover.setText("");
             c.setText("");
             databaseReference = FirebaseDatabase.getInstance().getReference("baseline-mentah");
+
             databaseReference.child(nama).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {

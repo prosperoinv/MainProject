@@ -47,6 +47,14 @@ public class DetailDistribusi extends AppCompatActivity {
     public void kirim(View view) {
         databaseReference = FirebaseDatabase.getInstance().getReference("penjualan");
         databaseReference.child(no).removeValue();
+        Intent bukti = new Intent(this,BuktiTransaksi.class);
+        bukti.putExtra("nama",nama);
+        bukti.putExtra("jumlah",jumlah);
+        bukti.putExtra("no",no);
+        bukti.putExtra("pemesan",pemesan);
+        bukti.putExtra("alamat",alamat);
+        bukti.putExtra("pengupdate",pengupdate);
+        startActivity(bukti);
         DetailDistribusi.this.finish();
     }
 }
